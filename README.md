@@ -96,7 +96,7 @@ Future Improvements
 
 About the Author
 
-This project was created by Athaher Sayem as a part of a 2nd semester coursework. It demonstrates fundamental concepts in C programming and basic file handling operations.
+This project was created by Athaher Sayem and my teammate ,as a part of a 2nd semester coursework. It demonstrates fundamental concepts in C programming and basic file handling operations.
 Contact
 
 For any queries or suggestions, please contact Athaher Sayem at athahersayem@yahoo.com
