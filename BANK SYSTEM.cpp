@@ -6,7 +6,7 @@
 #include<unistd.h>
 
 
-// Function declarations
+// Function
 void admin();
 void login();
 void menu();
@@ -24,20 +24,22 @@ void del();
 void about();
 void adminmenu();
 int find_node_no(int id);
+void loadFromFile();
+void saveToFile();
+void del();
+
 
 int total_user=0;
+
 COORD coord = {0, 0};
-void gotoxy(int a, int b) {
+void gotoxy(int a, int b)
+{
     coord.X = a;
     coord.Y = b;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
-// Structure for admin credentials
-struct admin
-{
-    char admin[10];
-    char password[10];
-};
+
+
 
 // Structure for customer account
 struct add
@@ -53,12 +55,13 @@ struct add
 };
 
 
-struct add *head = NULL,*temp=NULL,*usetemp=NULL;
-
+struct add *head=NULL,*temp=NULL,*usetemp=NULL;
+char dummy;
 int main()
 {
     system("color f4");
     system("CLS");
+    loadFromFile();
     gotoxy(50,10);
     printf(" WELCOME TO DIU BANKING SYSTEM \n");
     gotoxy(53,12);
@@ -66,12 +69,13 @@ int main()
 
     gotoxy(53,13);
     printf("2. User ");
-     gotoxy(53,15);
+    gotoxy(53,15);
     printf("Enter Your Choice .... ");
 
     int choose;
     scanf("%d", &choose);
-    if (choose != 1 && choose != 2) {
+    if (choose != 1 && choose != 2)
+    {
         system("cls");
         gotoxy(50,10);
         printf("Wrong Option");
@@ -93,20 +97,20 @@ int main()
         scanf(" %[^\n]", temppass);
 
         if (strcmp(username, tempname) == 0 && strcmp(pass, temppass) == 0)
-            {
-                system("cls");
-                  gotoxy(50,10);
-                printf("LOGIN SUCESSFULL");
-                sleep(1);
+        {
+            system("cls");
+            gotoxy(50,10);
+            printf("LOGIN SUCESSFULL");
+            sleep(1);
             adminmenu();
-            }
+        }
         else
         {
             system("cls");
-              gotoxy(50,10);
-             printf("Wrong UserName And Password");
-             sleep(2);
-             main();
+            gotoxy(50,10);
+            printf("Wrong UserName And Password");
+            sleep(2);
+            main();
         }
     }
     //user option
@@ -154,7 +158,7 @@ int option()
 void adminmenu()
 {
     system("CLS");
-      gotoxy(54,9);
+    gotoxy(54,9);
     printf("WELCOME TO MAIN MENU\n");
     gotoxy(50,11);
     printf("[1] . View Customer Accounts\n\n");
@@ -181,22 +185,26 @@ void add_account()
     system("CLS");
     gotoxy(54,8);
     printf("CUSTOMER ACCOUNT REGISTRATION\n");
-        gotoxy(50,10);
+    gotoxy(50,10);
     printf("Please Enter Your Name              : ");
-    scanf("%s", new_user->name);
+     dummy = getchar();
+    scanf("%[^\n]", new_user->name);
     gotoxy(50,11);
     printf("Please Enter Your Unique Student ID : ");
     scanf("%d", &new_user->id);
     gotoxy(50,12);
     printf("Please Enter Your Address           : ");
+
     scanf("%s", new_user->address);
     gotoxy(50,13);
     printf("Please Enter Your Phone Number      : ");
     scanf("%d", &new_user->phone);
     gotoxy(50,14);
     printf("Please Enter Your User ID           : ");
+
     scanf("%s", new_user->userid);
     gotoxy(50,15);
+
     printf("Please Enter Your Password          : ");
     scanf("%s", new_user->pass);
     gotoxy(50,16);
@@ -212,12 +220,16 @@ void add_account()
     else
     {
         total_user++;
+        temp = head;
+        while (temp->next != NULL)
+            temp = temp->next;
         temp->next = new_user;
-        temp=new_user;
     }
-gotoxy(50,18);
+    gotoxy(50,18);
     printf("New user regintration Successfull\n");
-gotoxy(50,20);
+    gotoxy(50,20);
+    //save
+    saveToFile();
     printf("Press any key to return back to Admin menu. \n");
     char z = getch();
     if (z == 13)
@@ -260,7 +272,7 @@ void view()
         temptemp = temptemp->next;
         i++;
     }
- gotoxy(50,i+5);
+    gotoxy(50,i+5);
     printf("Press any key to return back to Admin menu. \n");
     char z = getch();
     if (z == 13)
@@ -274,41 +286,41 @@ void view()
 void search()
 {
     struct add *temptemp = head;
-     gotoxy(50,2);
+    gotoxy(50,2);
     printf("Enter Student ID  : ");
     int id;
     scanf("%d", &id);
-int flag=0;
+    int flag=0;
     while (temptemp != NULL)
     {
         if (temptemp->id == id)
-            {
-                flag=1;
-                gotoxy(20,8);
-    printf("Name");
-    gotoxy(40,8);
-    printf("A/C NO");
-    gotoxy(60,8);
-    printf("Address");
-    gotoxy(80,8);
-    printf("Phone Number");
-    gotoxy(100,8);
-    printf("Balance");
+        {
+            flag=1;
+            gotoxy(20,8);
+            printf("Name");
+            gotoxy(40,8);
+            printf("A/C NO");
+            gotoxy(60,8);
+            printf("Address");
+            gotoxy(80,8);
+            printf("Phone Number");
+            gotoxy(100,8);
+            printf("Balance");
 
-                //****************************************************
-                 gotoxy(50,4);
-                printf("ID %d is found\n\n",id);
-               gotoxy(20,11);
-                printf("%s",temptemp->name);
-                gotoxy(40,11);
-                printf("%d",temptemp->id);
-                gotoxy(60,11);
-                printf("%s",temptemp->address);
-                gotoxy(80,11);
-                printf("%d",temptemp->phone);
-                gotoxy(100,11);
-                printf("%.2lf",temptemp->deposit);
-            }
+            //****************************************************
+            gotoxy(50,4);
+            printf("ID %d is found\n\n",id);
+            gotoxy(20,11);
+            printf("%s",temptemp->name);
+            gotoxy(40,11);
+            printf("%d",temptemp->id);
+            gotoxy(60,11);
+            printf("%s",temptemp->address);
+            gotoxy(80,11);
+            printf("%d",temptemp->phone);
+            gotoxy(100,11);
+            printf("%.2lf",temptemp->deposit);
+        }
         temptemp = temptemp->next;
     }
     if (flag==0)
@@ -353,12 +365,12 @@ void del()
         printf("List is empty.\n");
         return;
     }
-gotoxy(50,10);
+    gotoxy(50,10);
     printf("Enter user id : ");
     int id ;
 
     scanf("%d",&id);
-     int x=find_node_no(id);
+    int x=find_node_no(id);
 
     usetemp=head;
 
@@ -368,6 +380,7 @@ gotoxy(50,10);
         free(usetemp);
         gotoxy(50,11);
         printf("User Id Deleted Sucessfully\n");
+        sleep(2);
     }
     //last
     else if (id==temp->id)
@@ -375,26 +388,28 @@ gotoxy(50,10);
         struct add *prenode;
         while (usetemp->next != 0)
         {
-        prenode=usetemp;
-        usetemp=usetemp->next;
+            prenode=usetemp;
+            usetemp=usetemp->next;
 
         }
         temp=prenode;
-    prenode->next=NULL;
+        prenode->next=NULL;
+         printf("User Id Deleted Sucessfully\n");
+         sleep(2);
 
     }
     //middle
 
     else if (x==0)
     {
-         gotoxy(50,11);
+        gotoxy(50,11);
         printf("Student ID : %d Not Found\n",id);
-         gotoxy(50,15);
-         printf("Press any key to return back to Admin menu. \n");
+        gotoxy(50,15);
+        printf("Press any key to return back to Admin menu. \n");
         char z = getch();
         if (z == 13)
         {
-        adminmenu();
+            adminmenu();
         }
     }
 
@@ -405,27 +420,30 @@ gotoxy(50,10);
         usetemp=head;
 
         while (i<pos-1)
-    {
-         usetemp=usetemp->next;
-         i++;
+        {
+            usetemp=usetemp->next;
+            i++;
 
-    }
-    nextnode=usetemp->next;
-    usetemp->next=nextnode->next;
-    gotoxy(50,11);
+        }
+        nextnode=usetemp->next;
+        usetemp->next=nextnode->next;
+        gotoxy(50,11);
         printf("User Id Deleted Sucessfully\n");
+        sleep(2);
 
     }
 
 
+    saveToFile();
+    loadFromFile();
 
- gotoxy(50,15);
-printf("Press any key to return back to Admin menu. \n");
-char z = getch();
-if (z == 13)
-{
-    adminmenu();
-}
+    gotoxy(50,15);
+    printf("Press any key to return back to Admin menu. \n");
+    char z = getch();
+    if (z == 13)
+    {
+        adminmenu();
+    }
 
 }
 
@@ -438,14 +456,14 @@ void edit()
         printf("List is empty.\n");
         return;
     }
-   gotoxy(50,8);
+    gotoxy(50,8);
     printf("Enter Student ID to edit: ");
     int id;
     scanf("%d", &id);
 
     struct add *current = head;
 
-    // Traverse the list to find the node with given ID
+    // find
     while (current != NULL && current->id != id)
     {
         current = current->next;
@@ -456,14 +474,14 @@ void edit()
         gotoxy(50,10);
 
         printf("Enter Your New Details");
-          gotoxy(50,11);
+        gotoxy(50,11);
         printf("Enter new name          : ");
 
         scanf("%s", current->name);
-         gotoxy(50,12);
+        gotoxy(50,12);
         printf("Enter new address       : ");
         scanf("%s", current->address);
-          gotoxy(50,13);
+        gotoxy(50,13);
         printf("Enter new phone number  : ");
         scanf("%lf", &current->phone);
         gotoxy(50,14);
@@ -480,13 +498,15 @@ void edit()
         gotoxy(50,10);
         printf("Student ID %d not found.", id);
     }
-gotoxy(50,25);
+    gotoxy(50,25);
     printf("Press any key to return back to Admin menu. \n");
-char z = getch();
-if (z == 13)
-{
-    adminmenu();
-}
+    char z = getch();
+    if (z == 13)
+    {
+        saveToFile();
+        loadFromFile();
+        adminmenu();
+    }
 
 }
 
@@ -495,14 +515,14 @@ void menuexit()
     system("cls");
     gotoxy(50,10);
     printf("!!! THANK YOU !!!\n");
-     gotoxy(50,11);
+    gotoxy(50,11);
     printf("USER :: Athaher Sayem \n");
     system("cls");
-     gotoxy(50,12);
+    gotoxy(50,12);
     printf("Log Out successfull\n\n");
     sleep(1);
-   // exit(0);
     main();
+
 }
 
 int find_node_no(int x)
@@ -530,57 +550,59 @@ int find_node_no(int x)
 // USER Function ******************************************************************
 //***********************************************************************************
 
-void transaction() {
+void transaction()
+{
     system("CLS");
- gotoxy(50,10);
+    gotoxy(50,10);
     printf("TRANSACTION MENU");
-     gotoxy(50,12);
-
+    gotoxy(50,12);
     printf("[1] . Balance Inquiry");
-gotoxy(50,14);
+    gotoxy(50,14);
     printf("[2] . Cash Deposit");
-gotoxy(50,16);
+    gotoxy(50,16);
     printf("[3] . Cash Withdrawal");
-gotoxy(50,18);
+    gotoxy(50,18);
     printf("[4] . Main Menu");
 
 
-gotoxy(50,20);
+    gotoxy(50,20);
     printf("Please Enter Your Choice [1-4] : ");
     int a;
     scanf("%d", &a);
-    switch (a) {
-        case 1:
-            system("cls");
-            chkblnc();
-            break;
-        case 2:
-            system("cls");
-            deposit();
-            break;
-        case 3:
-            system("cls");
-            withdrawl();
-            break;
-        case 4:
-             system("cls");
-             main();
-             break;
+    switch (a)
+    {
+    case 1:
+        system("cls");
+        chkblnc();
+        break;
+    case 2:
+        system("cls");
+        deposit();
+        break;
+    case 3:
+        system("cls");
+        withdrawl();
+        break;
+    case 4:
+        system("cls");
+        main();
+        break;
 
-        default:
-            transaction();
+    default:
+        transaction();
     }
 }
 
 
 
 
-void chkblnc() {
+void chkblnc()
+{
 
     int id,flag=0;
-gotoxy(50,10);
+    gotoxy(50,10);
     printf("BALANCE INQUIRY");
-gotoxy(50,12);
+    gotoxy(50,12);
     printf("Enter Your Account Number : ");
     scanf("%d", &id);
 
@@ -594,11 +616,11 @@ gotoxy(50,12);
             gotoxy(50,14);
             printf("Account is found");
             gotoxy(50,15);
-                   printf("Your balance Is : %.2lf",usetemp->deposit);
+            printf("Your balance Is : %.2lf",usetemp->deposit);
             gotoxy(50,18);
             printf("Press any key to return back to main menu. ");
-                getch();
-                transaction();
+            getch();
+            transaction();
         }
         usetemp=usetemp->next;
 
@@ -610,8 +632,8 @@ gotoxy(50,12);
         printf("Account Doesn't Exit");
         gotoxy(50,18);
         printf("Press any key to return back to main menu. ");
-                getch();
-                transaction();
+        getch();
+        transaction();
     }
 
 
@@ -621,159 +643,54 @@ gotoxy(50,12);
 
 
 
-void deposit() {
+void deposit()
+{
     int id,flag=0;
     double money;
 
     system("cls");
-gotoxy(50,10);
+    gotoxy(50,10);
     printf("CASH DEPOSIT");
-gotoxy(50,12);
+    gotoxy(50,12);
     printf("Enter Your Account Number : ");
     scanf("%d", &id);
 
 
-     usetemp=head;
+    usetemp=head;
 
-     while (usetemp!=NULL)
-     {
-         if (usetemp->id==id)
-         {
-             flag=1;
-             gotoxy(50,14);
-             printf("Account Found");
-             gotoxy(50,15);
-              printf("Enter The Amount To Deposit : $ ");
+    while (usetemp!=NULL)
+    {
+        if (usetemp->id==id)
+        {
+            flag=1;
+            gotoxy(50,14);
+            printf("Account Found");
+            gotoxy(50,15);
+            printf("Enter The Amount To Deposit : $ ");
             scanf("%lf", &money);
             usetemp->deposit += money;
             gotoxy(50,16);
             printf("CASH DEPOSIT SUCCESSFULL\n\n");
-gotoxy(50,20);
+            saveToFile();
+            loadFromFile();
+            gotoxy(50,20);
             printf("Press any key to return back...");
             getch();
             transaction();
 
 
-         }
-         usetemp=usetemp->next;
-     }
-
-     if (flag==0)
-     {
-         gotoxy(50,14);
-          printf("Account Doesn't Exist.");
-          gotoxy(50,20);
-          printf("Press any key to return back...");
-            getch();
-            transaction();
-     }
-
-
+        }
+        usetemp=usetemp->next;
     }
-
-
-
-
-
-
-void withdrawl() {
-
-    int id,flag=0,wrongpass=0;
-    double money;
-  system("CLS");
-  gotoxy(50,10);
-    printf("CASH WITHDRAWAL");
-gotoxy(50,12);
-    printf("Enter Your Account Number : ");
-    scanf("%d",&id);
-
-    usetemp=head;
-
-     while (usetemp!=NULL)
-     {
-         if (usetemp->id==id)
-         {
-             flag=1;
-             gotoxy(50,14);
-             printf("Account Found");
-again:
-            gotoxy(50,15);
-             printf("Enter Your username : ");
-             char tempname[20];
-            scanf(" %[^\n]", tempname);
-            gotoxy(50,16);
-            printf("Enter Your Password : ");
-             char temppass[20];
-             scanf(" %[^\n]", temppass);
-
-              if (strcmp(usetemp->userid, tempname) == 0 && strcmp(usetemp->pass, temppass) == 0)
-                {
-                system("cls");
-                gotoxy(50,10);
-                printf("LOGIN SUCESSFULL");
-                sleep(1);
-                gotoxy(50,12);
-                 printf("Enter The Amount To Withdraw : $ ");
-                scanf("%lf",&money);
-
-                 if (usetemp->deposit >= money)
-                    {
-                  usetemp->deposit -= money;
-                  gotoxy(50,14);
-                  printf("CASH WITHDRAWAL SUCCESSFULL");
-                  gotoxy(50,18);
-                printf("Press Any Key To Continue ....   ");
-                getch();
-                transaction();
-
-                    }
-            else if (usetemp->deposit < money)
-            {
-                gotoxy(50,14);
-                printf("Entered amount exceeds current balance");
-                gotoxy(50,16);
-                  printf("Current Balance is $%.2lf",usetemp->deposit );
-                  gotoxy(50,18);
-                  printf("Press any key to return back...");
-            getch();
-            transaction();
-            }
-
-
-         }
-         else if (strcmp(usetemp->userid, tempname) != 0 || strcmp(usetemp->pass, temppass) != 0)
-         {
-
-             system("cls");
-             gotoxy(50,10);
-             printf("Wrong Password\n");
-             wrongpass++;
-             if (wrongpass==3)
-             {
-                 gotoxy(50,14);
-              printf("Press any key to return back...");
-            getch();
-            transaction();
-
-             }
-             sleep(2);
-goto again;
-
-         }
-         usetemp=usetemp->next;
-     }
-
-
-
-}
 
     if (flag==0)
     {
-        printf("Account Doesn't Exit");
-        printf("     Press Any Key To Continue ....   ");
-    getch();
-    transaction();
-
+        gotoxy(50,14);
+        printf("Account Doesn't Exist.");
+        gotoxy(50,20);
+        printf("Press any key to return back...");
+        getch();
+        transaction();
     }
 
 
@@ -781,3 +698,173 @@ goto again;
 
 
 
+
+
+
+void withdrawl()
+{
+    int id, flag = 0, wrongpass = 0;
+    double money;
+    system("CLS");
+    gotoxy(50,10);
+    printf("CASH WITHDRAWAL");
+    gotoxy(50,12);
+    printf("Enter Your Account Number : ");
+    scanf("%d", &id);
+
+    struct add *temptemp = head;
+
+    while (temptemp != NULL)
+    {
+        if (temptemp->id == id)
+        {
+            flag = 1;
+            gotoxy(50,14);
+            printf("Account Found");
+
+            while (wrongpass < 3)
+            {
+                gotoxy(50,15);
+                printf("Enter Your username : ");
+                char tempname[20];
+                scanf(" %[^\n]", tempname);
+                gotoxy(50,16);
+                printf("Enter Your Password : ");
+                char temppass[20];
+               dummy = getchar();
+                scanf(" %[^\n]", temppass);
+
+                if (strcmp(temptemp->userid, tempname) == 0 && strcmp(temptemp->pass, temppass) == 0)
+                {
+                    system("cls");
+                    gotoxy(50,10);
+                    printf("LOGIN SUCCESSFUL");
+                    sleep(1);
+                    gotoxy(50,12);
+                    printf("Enter The Amount To Withdraw : $ ");
+                    scanf("%lf", &money);
+
+                    if (temptemp->deposit >= money)
+                    {
+                        temptemp->deposit -= money;
+                        gotoxy(50,14);
+                        printf("CASH WITHDRAWAL SUCCESSFUL");
+                        saveToFile();
+                        loadFromFile();
+                        gotoxy(50,18);
+                        printf("Press Any Key To Continue ....   ");
+                        getch();
+                        transaction();
+                    }
+                    else
+                    {
+                        gotoxy(50,14);
+                        printf("Entered amount exceeds current balance");
+                        gotoxy(50,16);
+                        printf("Current Balance is $%.2lf", temptemp->deposit);
+                        gotoxy(50,18);
+                        printf("Press any key to return back...");
+                        getch();
+                        transaction();
+                    }
+                }
+                else
+                {
+                    system("cls");
+                    gotoxy(50,10);
+                    printf("Wrong Password\n");
+                    wrongpass++;
+                    if (wrongpass == 3)
+                    {
+                        gotoxy(50,14);
+                        printf("Press any key to return back...");
+                        getch();
+                        transaction();
+                    }
+                    sleep(2);
+                }
+            }
+        }
+
+        temptemp = temptemp->next;
+    }
+
+    if (flag == 0)
+    {
+        gotoxy(50,14);
+        printf("Account Doesn't Exist");
+        gotoxy(50,18);
+        printf("Press any key to return back...");
+        getch();
+        transaction();
+    }
+}
+
+//**********************************************************************************************
+//**********************************************************************************************
+////Load file
+
+void loadFromFile()
+{
+    FILE *fp = fopen("Record.txt", "r");
+    if (fp == NULL)
+    {
+        printf("File may not exist yet\n");
+        return;
+    }
+
+    head = NULL;
+
+    // Skip first line
+    char dummy[500];
+    fgets(dummy, sizeof(dummy), fp);
+
+
+    struct add *current = head;
+    while (!feof(fp))
+    {
+        struct add *newnode = (struct add*)malloc(sizeof(struct add));
+        if (newnode == NULL)
+        {
+            printf("Memory allocation failed.\n");
+            exit(1);
+        }
+        if (fscanf(fp, "%s %d %s %d %s %s %lf", newnode->name, &newnode->id, newnode->address, &newnode->phone,newnode->userid,newnode->pass, &newnode->deposit) != 7)
+        {
+            total_user++;
+            free(newnode);
+            break;
+        }
+        newnode->next = NULL;
+
+        if (head == NULL)
+            head = newnode;
+        else
+            current->next = newnode;
+
+        current = newnode;
+    }
+    fclose(fp);
+}
+
+void saveToFile()
+{
+    FILE *fp = fopen("Record.txt", "w");
+    if (fp == NULL)
+    {
+        printf("Error opening file for writing.\n");
+        return;
+    }
+
+    // header
+    fprintf(fp, "Name\t\tID\t\tAddress\tPhone\t\tUserID\t\tPassword\t\tBalance\n\n");
+
+    struct add *current = head;
+    while (current != NULL)
+    {
+        fprintf(fp, "%s\t%d\t%s\t%d\t%s\t%s\t\t%.2lf\n", current->name, current->id, current->address, current->phone, current->userid, current->pass, current->deposit);
+        current = current->next;
+    }
+
+    fclose(fp);
+}
