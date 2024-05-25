@@ -17,7 +17,7 @@ Admin Login
     If the login is successful, the admin is taken to the admin menu.
 ![1](https://github.com/Athaher-Sayem/Bank-Managemnt-Project/assets/169477084/10f4c883-f186-4d1a-bd04-69a28cc4eb0c)
 
-Main Menu :
+
     Admin Functions:
         View customer accounts
         Register new customer accounts
