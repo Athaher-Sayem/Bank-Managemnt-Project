@@ -1,8 +1,8 @@
-Name		ID		Address	Phone		UserID		Password		Balance
+Name		              ID		            Address	        Phone		      UserID		  Password		      Balance
 
-Athaher sayem	23215854	bhola	1775692383	sayem123	sayem123		1000.00
-Abrar Rafid	23215883	Lakshmipur	1879076104	rafid123	rafid123		1000.00
-Mithila Sanjida	23115859	Khagan	1716505396	mithila123	mithila123		1500.00
-Refat Prome	23215200	Mogbazar	1716894159	prome123	prome123		10.00
-Masud Rana	23215353	Mirpur	174367462	masud123	masud123		100.00
-Adnan Atik	23215724	Dhanmondi	18757636	atik123	atik123		10.00
+Athaher sayem	        23215854	        bhola	          1775692383	  sayem123	  sayem123		      1000.00
+Abrar Rafid	          23215883	        Lakshmipur	    1879076104	  rafid123	  rafid123		      1000.00
+Mithila Sanjida	      23115859	        Khagan	        1716505396	  mithila123	mithila123		    1500.00
+Refat Prome	          23215200	        Mogbazar	      1716894159	  prome123	  prome123		      10.00
+Masud Rana	          23215353	        Mirpur	        174367462	    masud123	  masud123		      100.00
+Adnan Atik	          23215724	        Dhanmondi	      18757636	    atik123	    atik123		        10.00
