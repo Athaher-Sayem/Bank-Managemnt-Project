@@ -4,14 +4,27 @@ Overview
 
 This project is a simple Bank Management System developed for a 2nd semester course using the C programming language. The system allows the bank's admin to manage customer accounts, including adding, viewing, editing, and deleting accounts. Users can perform transactions such as balance inquiries, deposits, and withdrawals.
 Features
+Upon starting the program, the main menu offers two options:
 
+    Admin Login
+    User Transaction
+
+Admin Login
+
+    Default Username: sayem
+    Default Password: sayem
+    
+    If the login is successful, the admin is taken to the admin menu.
+![1](https://github.com/Athaher-Sayem/Bank-Managemnt-Project/assets/169477084/10f4c883-f186-4d1a-bd04-69a28cc4eb0c)
+
+Main Menu :
     Admin Functions:
         View customer accounts
         Register new customer accounts
         Edit existing customer accounts
         Delete customer accounts
         Search for a customer account
-        View about section
+       
 ![2](https://github.com/Athaher-Sayem/Bank-Managemnt-Project/assets/169477084/cd6bee2c-d611-42aa-8781-6d57282a2201)
 
     User Functions:
@@ -26,20 +39,6 @@ Running the Program
     Ensure that the necessary C development environment is set up on your machine.
     Compile the source code using a C compiler (e.g., gcc).
     Run the compiled executable.
-
-Main Menu
-
-Upon starting the program, the main menu offers two options:
-
-    Admin Login
-    User Transaction
-
-Admin Login
-
-    Default Username: sayem
-    Default Password: sayem
-    If the login is successful, the admin is taken to the admin menu.
-![1](https://github.com/Athaher-Sayem/Bank-Managemnt-Project/assets/169477084/10f4c883-f186-4d1a-bd04-69a28cc4eb0c)
 
 Admin Menu Options
 
