@@ -12,11 +12,13 @@ Features
         Delete customer accounts
         Search for a customer account
         View about section
+![2](https://github.com/Athaher-Sayem/Bank-Managemnt-Project/assets/169477084/cd6bee2c-d611-42aa-8781-6d57282a2201)
 
     User Functions:
         Balance inquiry
         Cash deposit
         Cash withdrawal
+![5](https://github.com/Athaher-Sayem/Bank-Managemnt-Project/assets/169477084/8cf19930-4930-43e3-91aa-d91e17dfb46e)
 
 How to Use
 Running the Program
@@ -37,6 +39,7 @@ Admin Login
     Default Username: sayem
     Default Password: sayem
     If the login is successful, the admin is taken to the admin menu.
+![1](https://github.com/Athaher-Sayem/Bank-Managemnt-Project/assets/169477084/10f4c883-f186-4d1a-bd04-69a28cc4eb0c)
 
 Admin Menu Options
 
@@ -47,12 +50,14 @@ Admin Menu Options
     Search Customer Account: Enables the admin to search for a customer account by user ID.
     Log Out: Logs out the admin and returns to the main menu.
     About Us: Displays information about the project and the author.
+![3](https://github.com/Athaher-Sayem/Bank-Managemnt-Project/assets/169477084/8c4f5ce9-7b23-4fc2-b836-f667ce28fe07)
 
 User Transactions
 
     Balance Inquiry: Users can check their account balance by entering their account number.
     Cash Deposit: Users can deposit money into their account.
     Cash Withdrawal: Users can withdraw money from their account.
+![6](https://github.com/Athaher-Sayem/Bank-Managemnt-Project/assets/169477084/cbea416d-0fe2-4cf8-a0ac-1cadfd76581e)
 
 Data Storage
 
