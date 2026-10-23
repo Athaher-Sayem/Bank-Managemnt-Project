@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b43">
+  <meta name="description" content="A design-only introduction to a Windows console banking coursework project. No banking services or customer records are available here.">
+  <title>Bank Management System | Coursework archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,650&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead" id="top">
+    <a class="identity" href="#top"><span class="seal" aria-hidden="true">B</span><span>Coursework archive<small>Bank Management System</small></span></a>
+    <nav aria-label="Page navigation"><a href="#overview">Overview</a><a href="#explore">Explore the menus</a><a href="#source">Source notes</a></nav>
+    <a class="repo-link" href="https://github.com/Athaher-Sayem/Bank-Managemnt-Project/tree/Shocase_design" target="_blank" rel="noopener noreferrer">View source <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="folio">An interface study of a second-semester programming project</p>
+        <h1 id="hero-title">A bank, <em>in the terminal.</em></h1>
+        <p class="lead">A small Windows console program for learning account menus, transactions and file-backed records. This page presents the project; it is not an online banking service.</p>
+        <a class="primary" href="#explore">Explore the program's menus <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a paper ledger with a terminal prompt">
+        <div class="ledger"><div class="ledger-binding"></div><div class="ledger-title">COURSEWORK<br>LEDGER</div><div class="ledger-lines"></div><div class="ledger-stamp">FILE-BACKED<br>CONSOLE STUDY</div></div>
+        <div class="terminal"><span class="terminal-bar">WINDOWS CONSOLE · ILLUSTRATION</span><span class="terminal-prompt">&gt; choose a path<span class="cursor">_</span></span><span class="terminal-options">[1] Admin menu<br>[2] User transactions</span></div>
+      </div>
+    </section>
+    <div class="disclaimer"><span aria-hidden="true">※</span> Design-only showcase. No accounts, transfers, logins or records are accessible on this page.</div>
+    <section class="overview section-wrap" id="overview" aria-labelledby="overview-title">
+      <div class="section-aside">The original program</div>
+      <div class="section-body"><h2 id="overview-title">From menu choice<br>to saved record.</h2><p>The repository README describes a second-semester coursework project. Its principal source is a <code>.cpp</code> file using Windows console APIs and C-style functions. At startup, it loads account information from a local text file, then presents separate admin and user paths.</p><div class="flow" aria-label="Program flow"><span>Load local file</span><span aria-hidden="true">→</span><span>Choose a menu</span><span aria-hidden="true">→</span><span>Save changes to file</span></div></div>
+    </section>
+    <section class="explore" id="explore" aria-labelledby="explore-title">
+      <div class="section-wrap explore-heading"><div class="section-aside">Menu guide</div><div class="section-body"><h2 id="explore-title">Two doors into<br>the same program.</h2><p>Select a path to read about the original console menus. These controls only change the explanation below; they do not run the program.</p></div></div>
+      <div class="section-wrap menu-layout"><div class="menu-tabs" role="tablist" aria-label="Original program menus"><button type="button" id="admin-tab" role="tab" aria-selected="true" aria-controls="menu-panel" tabindex="0" data-menu="admin"><span class="tab-mark">A</span> Admin menu</button><button type="button" id="user-tab" role="tab" aria-selected="false" aria-controls="menu-panel" tabindex="-1" data-menu="user"><span class="tab-mark">U</span> User transactions</button></div><div id="menu-panel" class="menu-panel" role="tabpanel" aria-labelledby="admin-tab" tabindex="0"><p class="panel-label" id="panel-label">Admin path · original console application</p><h3 id="panel-title">Manage the account list.</h3><ul id="panel-items"><li>View and search accounts</li><li>Add and edit accounts</li><li>Delete accounts</li></ul><p id="panel-note">These are described in the project's README. This page does not accept credentials or display records.</p></div></div>
+    </section>
+    <section class="source section-wrap" id="source" aria-labelledby="source-title"><div class="section-aside">Read the source</div><div class="section-body"><h2 id="source-title">What this page<br>does <em>not</em> do.</h2><p>The repository includes a local <code>Record.txt</code> file. Its contents are intentionally not reproduced here. The README lists password encryption, a graphical interface and improved validation as future improvements—not shipped capabilities.</p><a href="https://github.com/Athaher-Sayem/Bank-Managemnt-Project/tree/Shocase_design" target="_blank" rel="noopener noreferrer" class="source-button">Browse the original repository <span aria-hidden="true">↗</span></a><p class="footnote">The link opens a GitHub source branch, not a hosted banking website.</p></div></section>
+  </main>
+  <footer><span>Bank Management System · an independent coursework showcase</span><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>
